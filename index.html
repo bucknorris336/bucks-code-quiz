@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Timed Js Quiz</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="container">
+        <div class="stats-container">
+          <p>
+            Time:
+            <b id="timer"> </b>
+          </p>
+          <p>
+            Score:
+            <b id="score"> </b>
+          </p>
+        </div>
+        <div class="home" id="home-screen">
+          <h1>Coding Quiz Challenge</h1>
+          <div class="btn-container">
+            <button id="start" class="start-button">Start</button>
+          </div>
+        </div>
+
+        <div class="question" id="question-screen">
+          <h1 id="question-title"></h1>
+          <div class="btn-container">
+            <button class="answer-btn" id="answerA"></button>
+            <button class="answer-btn" id="answerB"></button>
+            <button class="answer-btn" id="answerC"></button>
+            <button class="answer-btn" id="answerD"></button>
+          </div>
+        </div>
+        <div class="high-score" id="high-score">
+          <h1>High Scores</h1>
+          <div id="high-score-container" class="score-container"></div>
+          <button id="try-again">Try Again?</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
