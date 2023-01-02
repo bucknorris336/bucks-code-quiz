@@ -59,13 +59,37 @@ var currentQuestion;
 var questionIndex = 0;
 var score = 0;
 // var timer = 60;
-// var timerDisplay = document.getElementById("timer");
 var scoreDisplay = document.getElementById("score");
 scoreDisplay.innerHTML += score;
 var highScoreScreen = document.getElementById("high-score");
 var highScores = [];
 var highScoreContainer = document.getElementById("high-score-container");
 var tryAgainButton = document.getElementById("try-again");
+
+// var object = {
+//   a: 1,
+//   b: 2,
+// };
+// console.log("object[a]", object.a);
+
+var timerDisplay = document.getElementById("timer");
+var time = 60;
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function () {
+    time--;
+    // console.log("timer", time);
+    timerDisplay.textContent = time + " seconds left ";
+
+    //if (time === 0) {
+    // Stops execution of action at set interval
+    // clearInterval(timerInterval);
+    // Calls function to create and append image
+    // sendMessage();
+    //  }
+  }, 1000);
+}
+setTime();
 
 function generateQuestion() {
   currentQuestion = questionsArray[questionIndex];
