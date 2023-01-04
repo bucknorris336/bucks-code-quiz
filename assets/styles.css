@@ -73,3 +73,6 @@ button:hover {
   box-shadow: 4px 3px 6px #4450bd;
   background-color: #666;
 }
+.times-up {
+  display: none;
+}

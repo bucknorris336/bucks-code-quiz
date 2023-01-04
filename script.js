@@ -58,38 +58,40 @@ var currentQuestion;
 //this is where we tell the scrtip where int he questions array the current question is
 var questionIndex = 0;
 var score = 0;
-// var timer = 60;
+var timesUpScreen = document.getElementById("times-up");
 var scoreDisplay = document.getElementById("score");
 scoreDisplay.innerHTML += score;
 var highScoreScreen = document.getElementById("high-score");
 var highScores = [];
 var highScoreContainer = document.getElementById("high-score-container");
 var tryAgainButton = document.getElementById("try-again");
+var goToStartButton = document.getElementById("go-to-start");
+var goToHighScoresButton = document.getElementById("go-to-high-scores");
 
-// var object = {
-//   a: 1,
-//   b: 2,
-// };
-// console.log("object[a]", object.a);
-
+function timesUp() {
+  homeScreen.style.display = "none";
+  highScoreScreen.style.display = "none";
+  questionScreen.style.display = "none";
+  timesUpScreen.style.display = "flex";
+}
 var timerDisplay = document.getElementById("timer");
 var time = 60;
+var timerInterval;
 function setTime() {
   // Sets interval in variable
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     time--;
     // console.log("timer", time);
     timerDisplay.textContent = time + " seconds left ";
 
-    //if (time === 0) {
-    // Stops execution of action at set interval
-    // clearInterval(timerInterval);
-    // Calls function to create and append image
-    // sendMessage();
-    //  }
+    if (time === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      //Calls function to create and append image
+      timesUp();
+    }
   }, 1000);
 }
-setTime();
 
 function generateQuestion() {
   currentQuestion = questionsArray[questionIndex];
@@ -102,9 +104,8 @@ function generateQuestion() {
   correctAnswer = currentQuestion.correctAnswer;
 }
 function endGame() {
+  clearInterval(timerInterval);
   var initials = prompt("enter you initials", "Initials");
-  timer = 0;
-  // clearInterval(timer);
   highScores.push({
     initials: initials,
     score: score,
@@ -131,8 +132,11 @@ function startGame() {
   score = 0;
   homeScreen.style.display = "none";
   highScoreScreen.style.display = "none";
+  timesUpScreen.style.display = "none";
   questionScreen.style.display = "flex";
   generateQuestion();
+  time = 60;
+  setTime();
 }
 
 function checkAnswer(event) {
@@ -152,8 +156,18 @@ function checkAnswer(event) {
   }
 }
 
+function goToHighScores() {
+  homeScreen.style.display = "none";
+  timesUpScreen.style.display = "none";
+  questionScreen.style.display = "none";
+  highScoreScreen.style.display = "flex";
+}
+
 // This button starts the quiz!
 startQuizButton.addEventListener("click", startGame);
+goToHighScoresButton.addEventListener("click", goToHighScores);
+goToStartButton.addEventListener("click", startGame);
+
 tryAgainButton.addEventListener("click", startGame);
 //binds buttons to check answer function
 answerA.addEventListener("click", checkAnswer);
