@@ -1,3 +1,6 @@
 # bucks-code-quiz
+
 A timed quiz on JavaScript fundamentals that stores high scores
-The timer did not make sense to me, I tried my best. 
+The timer works but not perfectly
+
+https://bucknorris336.github.io/bucks-code-quiz/
